@@ -118,13 +118,13 @@ export default function Home() {
             <h3 className='text-2xl py-2'>
               is currently seeking new opportunities
             </h3>
-            <p className='text-left text-lg pt-5 leading-8 text-gray-800 dark:text-white md:px-20 lg:px-30'>
+            <p className='text-lg pt-5 leading-8 text-gray-800 dark:text-slate-200 md:px-20 lg:px-30'>
               I'm a graduate student at the University of Tokyo. My research interests lie in the field of Computer Vision, with a particular focus on Neural Radiance Fields. In addition to my research, I also have experience as a software engineer.
               {/* I'm currently seeking new opportunities for employment or an internship where I can apply my skills and knowledge to real-world problems. */}
             </p>
           </div>
 
-          <div className='text-5xl flex justify-center gap-16 py-10 text-gray-600'>
+          <div className='text-5xl flex justify-center gap-16 py-10 text-gray-600 dark:text-slate-400'>
             <a href='https://github.com/fu-yanyuan'>
               <AiFillGithub />
             </a>
