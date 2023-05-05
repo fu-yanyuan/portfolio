@@ -1,124 +1,144 @@
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Head from 'next/head'
+import Navbar from './api/NavBar';
+
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai"
+import { BsFillMoonStarsFill } from "react-icons/bs";
+import { AiFillFilePdf } from "react-icons/ai"
+
+import Image from 'next/image'
+import avocado from '../public/pngegg.png'
+import smilyG from '../public/emoji-avatar.png'
+import fu from '../public/fu.jpg'
+// import cvPdf from '../public/cv_fu.pdf'
+
+import { useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [darkMode, setDarkMode] = useState(false);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className={darkMode ? "dark" : ""}>
+      <Head>
+        <title>Yanyuan</title>
+        {/* <link rel='icon' href=''/> */}
+      </Head>
+
+      <main className='dark:bg-slate-800 min-h-screen'>
+        <div className='w-full h-25 px-10 dark:text-white md:px-32'>
+          <nav className='py-10 flex justify-between items-center'>
+            {/* <h1 className='text-3xl font-mono'>Yanyuan Fu</h1> */}
+            <ol className='flex items-center'>
+              {/* <li>
+    <a className='text-2xl font-mono hover:underline cursor-pointer pr-5 sm:text-3xl'>
+      Yanyuan Fu
+    </a>
+  </li> */}
+              <li>
+                <a className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl'>
+                  About
+                </a>
+              </li>
+              <li>
+                <a className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl'>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a
+                  href='https://fu-yanyuan.github.io/blog/'
+                  className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl'>
+                  Blog
+                </a>
+              </li>
+            </ol>
+
+            <ul className='flex items-center'>
+              <li>
+                <BsFillMoonStarsFill
+                  onClick={() => setDarkMode(!darkMode)}
+                  className='cursor-pointer text-2xl' />
+              </li>
+              <li className='ml-4 flex items-center sm:ml-10'>
+                <AiFillFilePdf className='text-3xl' />
+                <a
+                  href='/cv_fu.pdf'
+                  download='CV_YanyuanFu_2023.pdf'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-2 text-white rounded-md ml-0 sm:px-10'>
+                  CV
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
+
+        <div className='md:px-20 lg:px-40'>
+          {/* <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-3xl'>
+            <Image src={} />
+          </div> */}
+          <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-full my-5 overflow-hidden lg:w-96 lg:h-96 lg:my-10'>
+            <Image src={fu} />
+          </div>
+
+          <div className='text-center px-10 dark:text-white'>
+            <h2 className='text-5xl pb-2 text-teal-600 font-medium'>Yanyuan Fu</h2>
+            <h3 className='text-2xl py-2'>
+              is currently seeking new opportunities
+            </h3>
+            <p className='text-lg pt-5 leading-8 text-gray-800 dark:text-white md:px-20 lg:px-30'>
+              I'm a graduate student at the University of Tokyo. My research interests lie in the field of Computer Vision, with a particular focus on Neural Radiance Fields. In addition to my research, I also have experience as a software engineer.
+              {/* I'm currently seeking new opportunities for employment or an internship where I can apply my skills and knowledge to real-world problems. */}
+            </p>
+          </div>
+
+          <div className='text-5xl flex justify-center gap-16 py-10 text-gray-600'>
+            <a href='https://github.com/fu-yanyuan'>
+              <AiFillGithub />
+            </a>
+            <a href='https://www.linkedin.com/in/yanyuan-fu-32a7a3241/'>
+              <AiFillLinkedin />
+            </a>
+          </div>
+
+          {/* <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-full my-10 overflow-hidden md:w-96 md:h-96'>
+            <Image src={fu} />
+          </div> */}
+        </div>
+
+
+      </main>
+
+
+      {/* <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-3xl'>
+        <Image src={smilyG} />
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className='text-center p-10'>
+        <h2 className='text-5xl pb-2 text-teal-600 font-medium'>Yanyuan</h2>
+        <h3 className='text-2xl py-2'>
+          software engineer.
+        </h3>
+        <p className='text-lg py-5 leading-8 text-gray-800'>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961</p>
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className='text-5xl flex justify-center gap-16 py-10 text-gray-600'>
+        <AiFillGithub />
+        <AiFillLinkedin />
       </div>
-    </main>
+
+      <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-full my-10 overflow-hidden'>
+        <Image src={avocado} />
+      </div> */}
+
+      
+      {/* <div className='bg-blue-400 min-h-'>
+        <h1 className='text-2xl font-bold text-center'>Hello, this is Yanyuan</h1>
+      </div> */}
+
+
+    </div>
   )
 }
