@@ -50,7 +50,7 @@ export default function Home() {
           <nav className='py-10 flex justify-between items-center'>
             <div
               onClick={() => setNav(!sideBar)}
-              className='z-10 cursor-pointer text-2xl hover:text-3xl duration-200 sm:hidden'>
+              className='z-50 cursor-pointer text-2xl hover:text-3xl duration-200 sm:hidden'>
               {sideBar ? <FaTimes /> : <FaBars />}
             </div>
 
@@ -88,19 +88,28 @@ export default function Home() {
         </div>
 
         {sideBar && (
-          <ul className='flex flex-col absolute z-0 justify-center items-center top-0 left-0 h-1/5 w-1/5 pt-20 bg-gradient-to-b from-cyan-500 to-teal-500 sm:hidden'>
-            <li>home</li>
-            <li>home</li>
-            <li>home</li>
+          <ul className={`flex flex-col absolute z-10 justify-center items-center 
+                          top-0 left-0 h-screen w-full pt-20 
+                          bg-white dark:bg-slate-700 dark:text-slate-200
+                          sm:hidden`}>
+              {navLinks.map(({ id, navName, navLink }) => (
+                <li
+                  className='py-8' 
+                  key={id}>
+                  <a
+                    onClick={() => setNav(!sideBar)}
+                    href={navLink}
+                    className='text-4xl font-mono hover:underline cursor-pointer'>
+                    {navName}
+                  </a>
+                </li>
+              ))}
           </ul>
         )}
 
 
-        <div className='md:px-20 lg:px-40'>
-          {/* <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-3xl'>
-            <Image src={} />
-          </div> */}
-          <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-full my-5 overflow-hidden lg:w-96 lg:h-96 lg:my-10'>
+        <div className='md:px-20 lg:px-40 z-0'>
+          <div className='relative mx-auto w-72 h-72 rounded-full mt-0 mb-5 overflow-hidden lg:w-96 lg:h-96 lg:my-10'>
             <Image src={fu} />
           </div>
 
@@ -109,7 +118,7 @@ export default function Home() {
             <h3 className='text-2xl py-2'>
               is currently seeking new opportunities
             </h3>
-            <p className='text-lg pt-5 leading-8 text-gray-800 dark:text-white md:px-20 lg:px-30'>
+            <p className='text-left text-lg pt-5 leading-8 text-gray-800 dark:text-white md:px-20 lg:px-30'>
               I'm a graduate student at the University of Tokyo. My research interests lie in the field of Computer Vision, with a particular focus on Neural Radiance Fields. In addition to my research, I also have experience as a software engineer.
               {/* I'm currently seeking new opportunities for employment or an internship where I can apply my skills and knowledge to real-world problems. */}
             </p>
@@ -123,41 +132,8 @@ export default function Home() {
               <AiFillLinkedin />
             </a>
           </div>
-
-          {/* <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-full my-10 overflow-hidden md:w-96 md:h-96'>
-            <Image src={fu} />
-          </div> */}
         </div>
-
-
       </main>
-
-
-      {/* <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-3xl'>
-        <Image src={smilyG} />
-      </div>
-
-      <div className='text-center p-10'>
-        <h2 className='text-5xl pb-2 text-teal-600 font-medium'>Yanyuan</h2>
-        <h3 className='text-2xl py-2'>
-          software engineer.
-        </h3>
-        <p className='text-lg py-5 leading-8 text-gray-800'>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961</p>
-      </div>
-
-      <div className='text-5xl flex justify-center gap-16 py-10 text-gray-600'>
-        <AiFillGithub />
-        <AiFillLinkedin />
-      </div>
-
-      <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-full my-10 overflow-hidden'>
-        <Image src={avocado} />
-      </div> */}
-
-
-      {/* <div className='bg-blue-400 min-h-'>
-        <h1 className='text-2xl font-bold text-center'>Hello, this is Yanyuan</h1>
-      </div> */}
 
 
     </div>
