@@ -5,6 +5,7 @@ import Navbar from './api/NavBar';
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai"
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { AiFillFilePdf } from "react-icons/ai"
+import { FaBars, FaTimes } from "react-icons/fa"
 
 import Image from 'next/image'
 import avocado from '../public/pngegg.png'
@@ -13,11 +14,13 @@ import fu from '../public/fu.jpg'
 // import cvPdf from '../public/cv_fu.pdf'
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+  const [sideBar, setNav] = useState(false);
   const navLinks = [
     {
       id: 1,
@@ -45,56 +48,53 @@ export default function Home() {
       <main className='dark:bg-slate-800 min-h-screen'>
         <div className='w-full h-25 px-10 dark:text-white md:px-32'>
           <nav className='py-10 flex justify-between items-center'>
-            {/* <h1 className='text-3xl font-mono'>Yanyuan Fu</h1> */}
-            <ol className='flex items-center'>
-              {navLinks.map(({id, navName, navLink}) => (
+            <div
+              onClick={() => setNav(!sideBar)}
+              className='z-10 cursor-pointer text-2xl hover:text-3xl duration-200 sm:hidden'>
+              {sideBar ? <FaTimes /> : <FaBars />}
+            </div>
+
+            <ol className='hidden sm:flex items-center'>
+              {navLinks.map(({ id, navName, navLink }) => (
                 <li key={id}>
                   <a
-                    href={navLink} 
-                    className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl'>
+                    href={navLink}
+                    className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl lg:text-3xl'>
                     {navName}
                   </a>
                 </li>
               ))}
-              {/* <li>
-                <a className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl'>
-                  About
-                </a>
-              </li>
-              <li>
-                <a className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl'>
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a
-                  href='https://fu-yanyuan.github.io/blog/'
-                  className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl'>
-                  Blog
-                </a>
-              </li> */}
             </ol>
 
             <ul className='flex items-center'>
               <li>
                 <BsFillMoonStarsFill
                   onClick={() => setDarkMode(!darkMode)}
-                  className='cursor-pointer text-2xl hover:text-3xl duration-200' />
+                  className='cursor-pointer text-2xl hover:text-3xl duration-200 lg:text-3xl lg:hover:text-4xl' />
               </li>
               <li className='ml-4 flex items-center sm:ml-10'>
-                <AiFillFilePdf className='text-3xl' />
+                {/* <AiFillFilePdf className='text-3xl lg:text-4xl' /> */}
                 <a
                   href='/cv_fu.pdf'
                   download='CV_YanyuanFu_2023.pdf'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-2 text-white rounded-md ml-0 sm:px-10'>
+                  className='bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-2 text-lg text-white rounded-md ml-0 sm:px-10 hover:scale-110 duration-200'>
                   CV
                 </a>
               </li>
             </ul>
           </nav>
         </div>
+
+        {sideBar && (
+          <ul className='flex flex-col absolute z-0 justify-center items-center top-0 left-0 h-1/5 w-1/5 pt-20 bg-gradient-to-b from-cyan-500 to-teal-500 sm:hidden'>
+            <li>home</li>
+            <li>home</li>
+            <li>home</li>
+          </ul>
+        )}
+
 
         <div className='md:px-20 lg:px-40'>
           {/* <div className='relative mx-auto w-80 h-80 bg-gradient-to-b from-teal-500 to-white rounded-3xl'>
@@ -154,7 +154,7 @@ export default function Home() {
         <Image src={avocado} />
       </div> */}
 
-      
+
       {/* <div className='bg-blue-400 min-h-'>
         <h1 className='text-2xl font-bold text-center'>Hello, this is Yanyuan</h1>
       </div> */}
