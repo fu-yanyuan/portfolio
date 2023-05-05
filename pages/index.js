@@ -18,6 +18,23 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+  const navLinks = [
+    {
+      id: 1,
+      navName: 'About',
+      navLink: '# '
+    },
+    {
+      id: 2,
+      navName: 'Contact',
+      navLink: '# '
+    },
+    {
+      id: 3,
+      navName: 'Blog',
+      navLink: 'https://fu-yanyuan.github.io/blog/'
+    },
+  ]
   return (
     <div className={darkMode ? "dark" : ""}>
       <Head>
@@ -30,12 +47,16 @@ export default function Home() {
           <nav className='py-10 flex justify-between items-center'>
             {/* <h1 className='text-3xl font-mono'>Yanyuan Fu</h1> */}
             <ol className='flex items-center'>
+              {navLinks.map(({id, navName, navLink}) => (
+                <li key={id}>
+                  <a
+                    href={navLink} 
+                    className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl'>
+                    {navName}
+                  </a>
+                </li>
+              ))}
               {/* <li>
-    <a className='text-2xl font-mono hover:underline cursor-pointer pr-5 sm:text-3xl'>
-      Yanyuan Fu
-    </a>
-  </li> */}
-              <li>
                 <a className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl'>
                   About
                 </a>
@@ -51,14 +72,14 @@ export default function Home() {
                   className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl'>
                   Blog
                 </a>
-              </li>
+              </li> */}
             </ol>
 
             <ul className='flex items-center'>
               <li>
                 <BsFillMoonStarsFill
                   onClick={() => setDarkMode(!darkMode)}
-                  className='cursor-pointer text-2xl' />
+                  className='cursor-pointer text-2xl hover:text-3xl duration-200' />
               </li>
               <li className='ml-4 flex items-center sm:ml-10'>
                 <AiFillFilePdf className='text-3xl' />
