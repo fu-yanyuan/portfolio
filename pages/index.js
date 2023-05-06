@@ -8,8 +8,7 @@ import { AiFillFilePdf } from "react-icons/ai"
 import { FaBars, FaTimes } from "react-icons/fa"
 
 import Image from 'next/image'
-import avocado from '../public/pngegg.png'
-import smilyG from '../public/emoji-avatar.png'
+import wavingHand from '../public/wavinghand.png'
 import fu from '../public/fu.jpg'
 // import cvPdf from '../public/cv_fu.pdf'
 
@@ -43,9 +42,9 @@ export default function Home() {
       <Head>
         <title>Yanyuan</title>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
-        <link rel="manifest" href="/site.webmanifest"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
       <main className='dark:bg-slate-800 min-h-screen'>
@@ -95,46 +94,58 @@ export default function Home() {
                           top-0 left-0 h-screen w-full pt-20 
                           bg-white dark:bg-slate-700 dark:text-slate-200
                           sm:hidden`}>
-              {navLinks.map(({ id, navName, navLink }) => (
-                <li
-                  className='py-8' 
-                  key={id}>
-                  <a
-                    onClick={() => setNav(!sideBar)}
-                    href={navLink}
-                    className='text-4xl font-mono hover:underline cursor-pointer'>
-                    {navName}
-                  </a>
-                </li>
-              ))}
+            {navLinks.map(({ id, navName, navLink }) => (
+              <li
+                className='py-8'
+                key={id}>
+                <a
+                  onClick={() => setNav(!sideBar)}
+                  href={navLink}
+                  className='text-4xl font-mono hover:underline cursor-pointer'>
+                  {navName}
+                </a>
+              </li>
+            ))}
           </ul>
         )}
 
 
-        <div className='md:px-20 lg:px-40 z-0'>
-          <div className='relative mx-auto w-72 h-72 rounded-full mt-0 mb-5 overflow-hidden lg:w-96 lg:h-96 lg:my-10'>
-            <Image src={fu} />
+        <div className='mx-auto z-0 flex flex-col items-center justify-center md:px-20 lg:px-40 xl:flex-row'>
+          <div className='xl:h-full xl:px-10 bg-slate-600'>
+            <div className='relative mx-auto w-72 h-72 rounded-full mt-0 mb-5 overflow-hidden lg:w-96 lg:h-96 lg:my-10'>
+              <Image src={fu} />
+            </div>
+
+            <div className='text-center px-10 dark:text-white'>
+              <h2 className='text-5xl pb-2 text-teal-600 font-medium hover:text-6xl duration-200 cursor-pointer'>Yanyuan Fu</h2>
+              <h3 className='text-2xl py-2'>
+                Open To New Job Opportunities
+              </h3>
+            </div>
           </div>
 
-          <div className='text-center px-10 dark:text-white'>
-            <h2 className='text-5xl pb-2 text-teal-600 font-medium hover:text-6xl duration-200 cursor-pointer'>Yanyuan Fu</h2>
-            <h3 className='text-2xl py-2'>
-              is currently seeking new opportunities
-            </h3>
-            <p className='text-lg pt-5 leading-8 text-gray-800 dark:text-slate-200 md:px-20 lg:px-30'>
-              I'm a graduate student at the University of Tokyo. My research interests lie in the field of Computer Vision, with a particular focus on Neural Radiance Fields. In addition to my research, I also have experience as a software engineer.
-              {/* I'm currently seeking new opportunities for employment or an internship where I can apply my skills and knowledge to real-world problems. */}
-            </p>
+          <div className='flex flex-col xl:w-full xl:mx-20 bg-slate-500'>
+            <div className=' text-gray-800 dark:text-slate-200 text-center px-10 xl:text-left'>
+              <div className='flex flex-row'>
+                <h1 className='text-5xl'>Hello!</h1>
+                <Image src={wavingHand} width={50} height={50} />
+              </div>
+              <p className='text-lg pt-5 leading-8 text-gray-800 dark:text-slate-200 md:px-20 lg:px-30 xl:px-0'>
+                I'm a graduate student at the University of Tokyo. My research interests lie in the field of Computer Vision, with a particular focus on Neural Radiance Fields. In addition to my research, I also have experience as a software engineer.
+                {/* I'm currently seeking new opportunities for employment or an internship where I can apply my skills and knowledge to real-world problems. */}
+              </p>
+            </div>
+
+            <div className='text-5xl flex justify-center gap-16 py-10 text-gray-600 dark:text-slate-400'>
+              <a className='hover:scale-110 duration-200' href='https://github.com/fu-yanyuan'>
+                <AiFillGithub />
+              </a>
+              <a className='hover:scale-110 duration-200' href='https://www.linkedin.com/in/yanyuan-fu-32a7a3241/'>
+                <AiFillLinkedin />
+              </a>
+            </div>
           </div>
 
-          <div className='text-5xl flex justify-center gap-16 py-10 text-gray-600 dark:text-slate-400'>
-            <a className='hover:scale-110 duration-200' href='https://github.com/fu-yanyuan'>
-              <AiFillGithub />
-            </a>
-            <a className='hover:scale-110 duration-200' href='https://www.linkedin.com/in/yanyuan-fu-32a7a3241/'>
-              <AiFillLinkedin />
-            </a>
-          </div>
         </div>
       </main>
 
