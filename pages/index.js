@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Navbar from './api/NavBar';
 
-import { AiFillGithub, AiFillLinkedin } from "react-icons/ai"
+import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai"
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { AiFillFilePdf } from "react-icons/ai"
 import { FaBars, FaTimes } from "react-icons/fa"
@@ -136,6 +136,9 @@ export default function Home() {
             </a>
             <a className='hover:scale-110 duration-200' href='https://www.linkedin.com/in/yanyuan-fu-32a7a3241/'>
               <AiFillLinkedin />
+            </a>
+            <a className='hover:scale-110 duration-200' href='mailto:yanyuan@g.ecc.u-tokyo.ac.jp'>
+              <AiFillMail />
             </a>
           </div>
         </div>
