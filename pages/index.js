@@ -6,6 +6,7 @@ import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai"
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { AiFillFilePdf } from "react-icons/ai"
 import { FaBars, FaTimes } from "react-icons/fa"
+import { FiMoon, FiSun } from "react-icons/fi"
 
 import Image from 'next/image'
 import avocado from '../public/pngegg.png'
@@ -48,8 +49,8 @@ export default function Home() {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <main className='dark:bg-slate-800 min-h-screen'>
-        <div className='w-full h-25 px-10 dark:text-white md:px-32'>
+      <main className='bg-slate-50 dark:bg-slate-800 min-h-screen'>
+        <div className='text-black w-full h-25 px-10 dark:text-white md:px-32'>
           <nav className='py-10 flex justify-between items-center'>
             <div
               onClick={() => setNav(!sideBar)}
@@ -70,11 +71,19 @@ export default function Home() {
             </ol>
 
             <ul className='flex items-center'>
-              <li>
+              <div className='flex items-center justify-between'>
+                <span className='pr-2 text-xl'><FiSun /></span>
+                <input type="checkbox"
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="toggle px-5" />
+                <span className='pl-2 text-xl'><FiMoon /></span>
+              </div>
+
+              {/* <li>
                 <BsFillMoonStarsFill
                   onClick={() => setDarkMode(!darkMode)}
                   className='cursor-pointer text-2xl hover:text-3xl duration-200 lg:text-3xl lg:hover:text-4xl' />
-              </li>
+              </li> */}
               <li className='ml-4 flex items-center sm:ml-10'>
                 {/* <AiFillFilePdf className='text-3xl lg:text-4xl' /> */}
                 <a
@@ -93,7 +102,7 @@ export default function Home() {
         {sideBar && (
           <ul className={`flex flex-col absolute z-10 justify-center items-center 
                           top-0 left-0 h-screen w-full pt-20 
-                          bg-white dark:bg-slate-700 dark:text-slate-200
+                          bg-white text-slate-900 dark:bg-slate-700 dark:text-slate-200
                           sm:hidden`}>
             {navLinks.map(({ id, navName, navLink }) => (
               <li
@@ -118,7 +127,7 @@ export default function Home() {
 
           <div className='text-center px-10 dark:text-white'>
             <h2 className='text-5xl pb-2 text-teal-600 font-medium hover:text-6xl duration-200 cursor-pointer'>Yanyuan Fu</h2>
-            <h3 className='text-2xl py-2'>
+            <h3 className='text-2xl py-2 text-black dark:text-white'>
               Open To New Job Opportunities
             </h3>
             <div className='flex items-center mx-auto max-w-4xl'>
