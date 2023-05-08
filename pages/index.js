@@ -1,21 +1,17 @@
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Navbar from './api/NavBar';
+import About from './components/about';
 
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai"
-import { BsFillMoonStarsFill } from "react-icons/bs";
-import { AiFillFilePdf } from "react-icons/ai"
 import { FaBars, FaTimes } from "react-icons/fa"
 import { FiMoon, FiSun } from "react-icons/fi"
 
 import Image from 'next/image'
-import avocado from '../public/pngegg.png'
-import smilyG from '../public/emoji-avatar.png'
 import fu from '../public/fu.jpg'
-// import cvPdf from '../public/cv_fu.pdf'
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { Link as Scroll } from 'react-scroll'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,18 +22,18 @@ export default function Home() {
     {
       id: 1,
       navName: 'About',
-      navLink: '# '
+      navLink: 'about'
     },
     {
       id: 2,
       navName: 'Contact',
       navLink: '# '
     },
-    {
-      id: 3,
-      navName: 'Blog',
-      navLink: 'https://fu-yanyuan.github.io/blog/'
-    },
+    // {
+    //   id: 3,
+    //   navName: 'Blog',
+    //   navLink: 'https://fu-yanyuan.github.io/blog/'
+    // },
   ]
   return (
     <div className={darkMode ? "dark" : ""}>
@@ -60,23 +56,26 @@ export default function Home() {
 
             <ol className='hidden sm:flex items-center'>
               {navLinks.map(({ id, navName, navLink }) => (
-                <li key={id}>
-                  <a
-                    href={navLink}
-                    className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl lg:text-3xl'>
+                <li key={id} className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl lg:text-3xl'>
+                  <Scroll to={navLink} smooth duration={500} className='font-mono'>
                     {navName}
-                  </a>
+                  </Scroll>
                 </li>
               ))}
+              <li className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl lg:text-3xl'>
+                <a href='https://fu-yanyuan.github.io/blog/' className='font-mono'>
+                  Blog
+                </a>
+              </li>
             </ol>
 
             <ul className='flex items-center'>
-              <div className='flex items-center justify-between'>
-                <span className='pr-2 text-xl'><FiSun /></span>
+              <div className='flex items-center justify-between text-3xl'>
+                <span className='pr-2 text-3xl'><FiSun /></span>
                 <input type="checkbox"
                   onClick={() => setDarkMode(!darkMode)}
                   className="toggle px-5" />
-                <span className='pl-2 text-xl'><FiMoon /></span>
+                <span className='pl-2 text-3xl'><FiMoon /></span>
               </div>
 
               {/* <li>
@@ -108,14 +107,25 @@ export default function Home() {
               <li
                 className='py-8'
                 key={id}>
-                <a
+                {/* <a
                   onClick={() => setNav(!sideBar)}
                   href={navLink}
                   className='text-4xl font-mono hover:underline cursor-pointer'>
                   {navName}
-                </a>
+                </a> */}
+                <Scroll onClick={() => setNav(!sideBar)} to={navLink} smooth duration={500} className='text-4xl font-mono hover:underline cursor-pointer'>
+                    {navName}
+                  </Scroll>
               </li>
             ))}
+            <li className='py-8'>
+              <a
+                // onClick={() => setNav(!sideBar)}
+                href='https://fu-yanyuan.github.io/blog/'
+                className='text-4xl font-mono hover:underline cursor-pointer'>
+                Blog
+              </a>
+            </li>
           </ul>
         )}
 
@@ -126,9 +136,13 @@ export default function Home() {
           </div>
 
           <div className='text-center px-10 dark:text-white'>
-            <h2 className='text-5xl pb-2 text-teal-600 font-medium hover:text-6xl duration-200 cursor-pointer'>Yanyuan Fu</h2>
+            <h2 className='text-5xl pb-2 text-teal-600 font-medium hover:text-6xl duration-200 cursor-pointer'>
+              Yanyuan Fu
+            </h2>
             <h3 className='text-2xl py-2 text-black dark:text-white'>
+              <span className='text-3xl'>👨‍💻</span>
               Open To New Job Opportunities
+              <span className='text-3xl'>👨‍💻</span>
             </h3>
             <div className='flex items-center mx-auto max-w-4xl'>
               <p className='text-lg pt-5 leading-8 text-gray-800 dark:text-slate-200 md:px-20 lg:px-30'>
@@ -151,8 +165,9 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </main>
 
+        <About darkMode={darkMode} />
+      </main>
 
     </div>
   )
