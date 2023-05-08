@@ -4,19 +4,14 @@ import Navbar from './api/NavBar';
 import About from './components/about';
 
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai"
-import { BsFillMoonStarsFill } from "react-icons/bs";
-import { AiFillFilePdf } from "react-icons/ai"
 import { FaBars, FaTimes } from "react-icons/fa"
 import { FiMoon, FiSun } from "react-icons/fi"
 
 import Image from 'next/image'
-import avocado from '../public/pngegg.png'
-import smilyG from '../public/emoji-avatar.png'
 import fu from '../public/fu.jpg'
-// import cvPdf from '../public/cv_fu.pdf'
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { Link as Scroll } from 'react-scroll'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,18 +22,18 @@ export default function Home() {
     {
       id: 1,
       navName: 'About',
-      navLink: '/#about'
+      navLink: 'about'
     },
     {
       id: 2,
       navName: 'Contact',
       navLink: '# '
     },
-    {
-      id: 3,
-      navName: 'Blog',
-      navLink: 'https://fu-yanyuan.github.io/blog/'
-    },
+    // {
+    //   id: 3,
+    //   navName: 'Blog',
+    //   navLink: 'https://fu-yanyuan.github.io/blog/'
+    // },
   ]
   return (
     <div className={darkMode ? "dark" : ""}>
@@ -61,14 +56,17 @@ export default function Home() {
 
             <ol className='hidden sm:flex items-center'>
               {navLinks.map(({ id, navName, navLink }) => (
-                <li key={id}>
-                  <a
-                    href={navLink}
-                    className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl lg:text-3xl'>
+                <li key={id} className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl lg:text-3xl'>
+                  <Scroll to={navLink} smooth duration={500} className='font-mono'>
                     {navName}
-                  </a>
+                  </Scroll>
                 </li>
               ))}
+              <li className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl lg:text-3xl'>
+                <a href='https://fu-yanyuan.github.io/blog/' className='font-mono'>
+                  Blog
+                </a>
+              </li>
             </ol>
 
             <ul className='flex items-center'>
@@ -109,14 +107,25 @@ export default function Home() {
               <li
                 className='py-8'
                 key={id}>
-                <a
+                {/* <a
                   onClick={() => setNav(!sideBar)}
                   href={navLink}
                   className='text-4xl font-mono hover:underline cursor-pointer'>
                   {navName}
-                </a>
+                </a> */}
+                <Scroll onClick={() => setNav(!sideBar)} to={navLink} smooth duration={500} className='text-4xl font-mono hover:underline cursor-pointer'>
+                    {navName}
+                  </Scroll>
               </li>
             ))}
+            <li className='py-8'>
+              <a
+                // onClick={() => setNav(!sideBar)}
+                href='https://fu-yanyuan.github.io/blog/'
+                className='text-4xl font-mono hover:underline cursor-pointer'>
+                Blog
+              </a>
+            </li>
           </ul>
         )}
 
@@ -157,7 +166,7 @@ export default function Home() {
           </div>
         </div>
 
-        <About darkMode={darkMode}/>
+        <About darkMode={darkMode} />
       </main>
 
     </div>

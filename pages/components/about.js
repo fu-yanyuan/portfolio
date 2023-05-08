@@ -1,6 +1,6 @@
 export default function About({darkMode}) {
   return (
-    <section name='about' className={`w-full h-screen ${darkMode ? "dark": ""}`}>
+    <section id="about" className={`w-full h-screen ${darkMode ? "dark": ""}`}>
       <div className="p-10 mx-auto flex flex-col justify-center w-full h-full max-w-[860px]">
         <div className="pb-8">
           <p className="text-black text-4xl font-bold inline border-b-4 border-teal-600 dark:text-slate-300">
