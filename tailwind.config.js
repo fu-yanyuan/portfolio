@@ -13,6 +13,10 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      screens: {
+        'se': { 'raw': '(min-height: 800px)' },
+        'ss': '300px',
+      },
     },
   },
   plugins: [require("daisyui")],

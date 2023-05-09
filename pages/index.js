@@ -130,7 +130,7 @@ export default function Home() {
         )}
 
 
-        <div className='md:px-20 lg:px-40 z-0'>
+        <div className='h-auto md:px-20 lg:px-40 z-0'>
           <div className='relative mx-auto w-72 h-72 rounded-full mt-0 mb-5 overflow-hidden lg:w-96 lg:h-96 lg:my-10'>
             <Image src={fu} />
           </div>
@@ -153,7 +153,7 @@ export default function Home() {
 
           </div>
 
-          <div className='text-5xl flex justify-center gap-16 py-10 text-gray-600 dark:text-slate-400'>
+          <div className='text-5xl flex flex-col items-center ss:flex-row justify-center gap-16 py-10 text-gray-600 dark:text-slate-400'>
             <a className='hover:scale-110 duration-200' href='https://github.com/fu-yanyuan'>
               <AiFillGithub />
             </a>
