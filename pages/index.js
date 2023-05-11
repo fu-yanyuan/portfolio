@@ -21,11 +21,16 @@ export default function Home() {
   const navLinks = [
     {
       id: 1,
+      navName: 'Home',
+      navLink: 'top'
+    },
+    {
+      id: 2,
       navName: 'About',
       navLink: 'about'
     },
     {
-      id: 2,
+      id: 3,
       navName: 'Contact',
       navLink: '# '
     },
@@ -46,15 +51,15 @@ export default function Home() {
       </Head>
 
       <main className='bg-slate-50 dark:bg-slate-800 min-h-screen'>
-        <div className='text-black w-full h-25 px-10 dark:text-white md:px-32'>
+        <div id='top' className='text-black w-full h-25 px-10 dark:text-white md:px-32'>
           <nav className='py-10 flex justify-between items-center'>
             <div
               onClick={() => setNav(!sideBar)}
-              className='z-50 cursor-pointer text-2xl hover:text-3xl duration-200 sm:hidden'>
+              className='z-50 cursor-pointer text-2xl hover:text-3xl duration-200 md:hidden'>
               {sideBar ? <FaTimes /> : <FaBars />}
             </div>
 
-            <ol className='hidden sm:flex items-center'>
+            <ol className='hidden md:flex items-center'>
               {navLinks.map(({ id, navName, navLink }) => (
                 <li key={id} className='text-xl font-mono hover:underline cursor-pointer pr-5 sm:text-2xl lg:text-3xl'>
                   <Scroll to={navLink} smooth duration={500} className='font-mono'>
@@ -102,7 +107,7 @@ export default function Home() {
           <ul className={`flex flex-col absolute z-10 justify-center items-center 
                           top-0 left-0 h-screen w-full pt-20 
                           bg-white text-slate-900 dark:bg-slate-700 dark:text-slate-200
-                          sm:hidden`}>
+                          md:hidden`}>
             {navLinks.map(({ id, navName, navLink }) => (
               <li
                 className='py-8'
@@ -114,8 +119,8 @@ export default function Home() {
                   {navName}
                 </a> */}
                 <Scroll onClick={() => setNav(!sideBar)} to={navLink} smooth duration={500} className='text-4xl font-mono hover:underline cursor-pointer'>
-                    {navName}
-                  </Scroll>
+                  {navName}
+                </Scroll>
               </li>
             ))}
             <li className='py-8'>
