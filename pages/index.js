@@ -13,6 +13,8 @@ import fu from '../public/fu.jpg'
 import { useState } from 'react';
 import { Link as Scroll } from 'react-scroll'
 
+import ScrollToTopButton from './components/scrollToTopButton';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -47,7 +49,7 @@ export default function Home() {
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href="/site.webmanifest" /> 
       </Head>
 
       <main className='bg-slate-50 dark:bg-slate-800 min-h-screen'>
@@ -172,8 +174,9 @@ export default function Home() {
         </div>
 
         <About darkMode={darkMode} />
-      </main>
 
+        <ScrollToTopButton />
+      </main>
     </div>
   )
 }
