@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Navbar from './api/NavBar';
 import About from './components/about';
+import Footer from './components/footer';
 
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai"
 import { FaBars, FaTimes } from "react-icons/fa"
@@ -175,7 +176,11 @@ export default function Home() {
 
         <About darkMode={darkMode} />
 
+        <Footer />
+
         <ScrollToTopButton />
+
+
       </main>
     </div>
   )
